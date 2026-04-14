@@ -23,6 +23,7 @@ if __name__ == '__main__':
         help = 'A path to a file.',  # The help menu text
     )
 
+
     # Using the `add_argument` method again to create an optional keyword
     # argument for an integer
     parser.add_argument(
@@ -48,9 +49,20 @@ if __name__ == '__main__':
         help = 'A boolean option.',
     )
 
-    # Parse the command-line arguments into a 'dict'-like container
-    args = parser.parse_args()
+parser.add_argument(
+    '-q', '--quiet',
+    default = False, 
+    action = 'store_true',
+    help = 'Another boolean option.'
+)
 
+# Parse the command-line arguments into a 'dict'-like container
+args = parser.parse_args()
+
+if args.quiet:
+    print("Be vewy vewy quiet. I'm hunting wabbits.")
+
+else:
     # What does `args` object "look" like?
     print(
         "The args after being processed by the argparse parser object:\n",
